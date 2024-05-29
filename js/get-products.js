@@ -12,7 +12,7 @@ export function getProducts() {
     const tbody = document.querySelector("#tableProduct>tbody");
     const dados = JSON.parse(localStorage.getItem('local'));
     const sortSelect = document.getElementById("sortSelect");
-    const serverURL = `http://localhost:8080/api/v1/product?size=10`;
+    const serverURL = `http://localhost:8080/api/v1/product?size=6`;
     const btnPrevPage = document.getElementById("prevPage");
     const btnNextPage = document.getElementById("nextPage");
     const pageNumber = document.getElementById("pageNumber");

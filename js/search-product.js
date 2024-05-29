@@ -13,7 +13,7 @@ productName.addEventListener('keypress', (e) => {
             tbody.innerHTML = "";
             getProducts();
         } else {
-            fetch(serverURL + `/${productName.value}?size=10`,
+            fetch(serverURL + `/${productName.value}?size=6`,
                 {
                     headers: {
                         "Accept": "*/*",
