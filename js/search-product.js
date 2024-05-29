@@ -7,66 +7,67 @@ const tbody = document.querySelector("#tableProduct>tbody");
 
 // um pouco de delay, precisa melhorar
 
-productName.addEventListener('keypress', () => {
+productName.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        if (productName.value == "") {
+            tbody.innerHTML = "";
+            getProducts();
+        } else {
+            fetch(serverURL + `/${productName.value}?size=10`,
+                {
+                    headers: {
+                        "Accept": "*/*",
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + dados.accessToken
+                    },
+                    method: "GET"
+                })
+                .then(function (res) {
+                    console.log(res)
 
-    if(productName.value == ""){
-        tbody.innerHTML = "";
-        getProducts();
-    } else{
-        fetch(serverURL + `/${productName.value}?size=10`,
-        {
-            headers: {
-                "Accept": "*/*",
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + dados.accessToken
-            },
-            method: "GET"
-        })
-        .then(function (res) {
-            console.log(res)
-    
-            res.json().then((produtos) => {
-                tbody.innerHTML = "";
-                if(produtos._embedded == null){
-                    tbody.innerHTML =  '<tr class="product_not_found_row">' +
-                                            '<td class="product_not_found" colspan="8">Nenhum Produto Encontrado...</td>' +
-                                        '</tr>';
-                }
+                    res.json().then((produtos) => {
+                        tbody.innerHTML = "";
+                        if (produtos._embedded == null) {
+                            tbody.innerHTML = '<tr class="product_not_found_row">' +
+                                '<td class="product_not_found" colspan="8">Nenhum Produto Encontrado...</td>' +
+                                '</tr>';
+                        }
 
-                produtos._embedded.produtoVOList.map(x => {
-                    
+                        produtos._embedded.produtoVOList.map(x => {
 
-                    const newRow = document.createElement("tr");
-                    let imageTipo = "";
-                    
-                    if(x.tipo == "BEBIDA"){
-                        imageTipo = "./products-img/drink.png";
-                    } else if(x.tipo == "LIMPEZA"){
-                        imageTipo = "./products-img/clean.png";
-                    } else{
-                        imageTipo = "./products-img/food.png";
-                    }
-    
-                    newRow.innerHTML = `
-                        <td><img src="${imageTipo}" class="image-edit"></td>
-                        <td>${x.id}</td>
-                        <td>${x.nomeProduto}</td>
-                        <td>${x.descricao}</td>
-                        <td>${x.quantidade}</td>
-                        <td>${x.dataValidadeFormatter}</td>
-                        <td>${x.lembreteFormatter}</td>
-                        <td>
-                            <a href="./edit-produto.html?id=${x.id}" class="image-edit"><img src="./products-img/Edit.png" alt="Edit"></a>
-                            <button class="image-delete"><img id="delete-${x.id}" src="./products-img/Delete.png" alt="Delete"></img></button>
-                        </td>
-                        `;
-    
-                        tbody.appendChild(newRow);
-                });
-            })
-    
-        })
-        .catch(function (res) { console.log(res) })
+
+                            const newRow = document.createElement("tr");
+                            let imageTipo = "";
+
+                            if (x.tipo == "BEBIDA") {
+                                imageTipo = "./products-img/drink.png";
+                            } else if (x.tipo == "LIMPEZA") {
+                                imageTipo = "./products-img/clean.png";
+                            } else {
+                                imageTipo = "./products-img/food.png";
+                            }
+
+                            newRow.innerHTML = `
+                            <td><img src="${imageTipo}" class="image-edit"></td>
+                            <td>${x.id}</td>
+                            <td>${x.nomeProduto}</td>
+                            <td>${x.descricao}</td>
+                            <td>${x.quantidade}</td>
+                            <td>${x.dataValidadeFormatter}</td>
+                            <td>${x.lembreteFormatter}</td>
+                            <td>
+                                <a href="./edit-produto.html?id=${x.id}" class="image-edit"><img src="./products-img/Edit.png" alt="Edit"></a>
+                                <button class="image-delete"><img id="delete-${x.id}" src="./products-img/Delete.png" alt="Delete"></img></button>
+                            </td>
+                            `;
+
+                            tbody.appendChild(newRow);
+                        });
+                    })
+
+                })
+                .catch(function (res) { console.log(res) })
+        }
     }
-    
+
 })
