@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/add-product.css">
+    <script type="module" src="/js/post-product.js" defer></script>
+    <title>Adicionar Produto</title>
+</head>
+
+<body>
+    <div class="main-addproduct">
+        <div class="left-product">
+            <img src="img/addproduto.svg" class="left-product-image">
+        </div>
+        <div class="right-product">
+            <div class="card-product">
+                <h1>Adicionar Produto</h1>
+                <div class="textfield">
+                    <label for="product">Produto</label>
+                    <input id="produto" type="text" class="produto" name="product" placeholder="Produto" required>
+                </div>
+                <div class="textfield">
+                    <label for="description">Descrição</label>
+                    <input id="descricao" type="text" class="descricao" name="description" placeholder="Digite sua Descrição" required>
+                </div>
+                <div class="textfield">
+                    <label for="quantity">Quantidade</label>
+                    <input id="quantidade" type="number" class="quantidade" name="quantity" placeholder="Quantidade" required>
+                </div>
+                <div class="textfield">
+                    <label for="dateval">Data de Validade</label>
+                    <input id="date" type="date" class="date" name="dateval" placeholder="Data de Validade" required>
+                </div>
+                <div class="textfield">
+                    <label for="selecttime">Lembrar-me em:
+                        <select class="select" name="select" id="selectime">
+                            <option value="#">Selecione uma opção</option>
+                            <option value="15">15 dias</option>
+                            <option value="10">10 dias</option>
+                            <option value="5">5 dias</option>
+                            <option value="2">2 dias</option>
+                            <option value="30">30 segundos</option>
+                        </select>
+                    </label>
+                 </div>
+                 <div class="textfield">
+                    <label for="selecttype">Tipo do Produto:
+                        <select class="select" name="selecttype" id="selecttype">
+                            <option value="#">Selecione o tipo</option>
+                            <option value="BEBIDA">Bebida</option>
+                            <option value="COMIDA">Comida</option>
+                            <option value="LIMPEZA">Limpeza</option>
+                        </select>
+                    </label>
+                 </div> 
+                <button id="salvarProduto" class="btn-add">Adicionar Produto</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
