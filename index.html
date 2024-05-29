@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Estoque</title>
+  <link rel="stylesheet" href="css/list-products.css">
+</head>
+<body>
+    <header class="header">SmartTech</header>
+    <div class="container">
+        <h1>Controle de Estoque</h1>
+        <div class="controls">
+            <input id="searchProduct" type="search" name="search" class="search-input" placeholder="Buscar produto...">
+            <select id="sortSelect" class="sort-select">
+                <option value="#">Filtro</option>
+                <option value="nomeProduto">Nome do Produto</option>
+                <option value="tipo">Tipo do Produto</option>
+                <option value="dataValidade">Data de Validade</option>
+                <option value="quantidade">Quantidade do Produto</option>
+            </select>
+        </div>
+        <table id="tableProduct">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>ID</th>
+                    <th>Nome do Produto</th>
+                    <th>Descrição</th>
+                    <th>Quantidade</th>
+                    <th>Data de Validade</th>
+                    <th>Lembrete</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <button id="prevPage" class="pagination-btn">Anterior</button>
+            <span id="pageNumber" class="page-number"></span>
+            <button id="nextPage" class="pagination-btn">Próximo</button>
+        </div>
+    </div>
+    <div class="actions">
+        <a href="add-produto.html" target="_blank" class="add-product-btn">Adicionar Novo Produto</a>
+    </div>
+
+    <!-- Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Você tem certeza que deseja deletar este produto?</p>
+            <button id="confirmDelete" class="confirm-btn">Confirmar</button>
+            <button id="cancelDelete" class="cancel-btn">Cancelar</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/get-products.js"></script>
+    <script type="module" src="js/delete-product.js"></script>
+    <script type="module" src="js/search-product.js"></script>
+
+</body>
+</html>
