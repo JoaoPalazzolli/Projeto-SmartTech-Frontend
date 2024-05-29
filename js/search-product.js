@@ -28,7 +28,9 @@ productName.addEventListener('keypress', () => {
             res.json().then((produtos) => {
                 tbody.innerHTML = "";
                 if(produtos._embedded == null){
-                    tbody.innerHTML = '<p class="product_not_found">Nenhum Produto Encontrado...</p>';
+                    tbody.innerHTML =  '<tr class="product_not_found_row">' +
+                                            '<td class="product_not_found" colspan="8">Nenhum Produto Encontrado...</td>' +
+                                        '</tr>';
                 }
 
                 produtos._embedded.produtoVOList.map(x => {

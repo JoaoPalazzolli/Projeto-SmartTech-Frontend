@@ -350,9 +350,13 @@ th {
 
 .product_not_found {
     text-align: center;
+    padding: 20px; 
+    font-size: 1.2rem; 
+    color: #333; 
+    background-color: #f9f9f9; 
+    border-bottom: 1px solid #ddd; 
 }
 
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
